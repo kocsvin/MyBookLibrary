@@ -10,12 +10,14 @@ public class BookController {
 
     @GetMapping(value = "/")
     public String index() {
-        return "Hi! I am parrot. I repeat what you say.";
+        return "Hi! This is my book app";
     }
+
     @PostMapping(value = "/book")
     public void addBook(@RequestBody String book) {
         bookTitles.add(book);
     }
+
     @GetMapping(value = "/allBooks")
     public ArrayList<String> getBooks() {
         return bookTitles;
@@ -23,11 +25,7 @@ public class BookController {
 
     @DeleteMapping(value = "/book")
     public void deleteLearnedWord(@RequestBody String deletedBook) {
-        for (String book : bookTitles) {
-            bookTitles.removeIf( n -> book.equals(deletedBook));
-        }
-            
+            bookTitles.remove(deletedBook);
     }
-
 
 }
